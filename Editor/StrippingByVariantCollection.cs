@@ -524,10 +524,10 @@ namespace UTJ.ShaderVariantStripping
 
         private void SaveResult(Shader shader, ShaderSnippetData snippet)
         {
-            string shaderName = shader.name.Replace("/", "_");
+            string shaderName = shader.name.Replace("/", "_").Replace("\\", "_");
             string includeDir = LogDirectory + "/" + dateTimeStr + "/Include/" + shaderName;
             string excludeDir = LogDirectory + "/" + dateTimeStr + "/Exclude/" + shaderName;
-            string name = shaderName + "_" + snippet.shaderType.ToString() + "_" + snippet.passName + "_" + snippet.passType;
+            string name = snippet.shaderType.ToString() + "_" + snippet.passName.Replace("/", "_").Replace("\\", "_") + "_" + snippet.passType;
 
             if (includeVariantsBuffer.Length != 0)
             {
@@ -601,8 +601,8 @@ namespace UTJ.ShaderVariantStripping
             }
             this.includeVariantsBuffer.Append("\n==================\n");
 
-            string shaderName = shader.name.Replace("/", "_");
-            string name = shaderName + "_" + snippet.shaderType.ToString() + "_" + snippet.passName + "_" + snippet.passType;
+            string shaderName = shader.name.Replace("/", "_").Replace("\\", "_");
+            string name = snippet.shaderType.ToString() + "_" + snippet.passName.Replace("/", "_").Replace("\\", "_") + "_" + snippet.passType;
             string includeDir = LogDirectory + "/" + dateTimeStr + "/Include/" + shaderName;
             if (!System.IO.Directory.Exists(includeDir))
             {
@@ -623,8 +623,8 @@ namespace UTJ.ShaderVariantStripping
             }
             this.excludeVariantsBuffer.Append("\n==================\n");
 
-            string shaderName = shader.name.Replace("/", "_");
-            string name = shaderName + "_" + snippet.shaderType.ToString() + "_" + snippet.passName + "_" + snippet.passType;
+            string shaderName = shader.name.Replace("/", "_").Replace("\\", "_");
+            string name = snippet.shaderType.ToString() + "_" + snippet.passName.Replace("/", "_").Replace("\\", "_") + "_" + snippet.passType;
             string excludeDir = LogDirectory + "/" + dateTimeStr + "/Exclude/" + shaderName;
 
             if (!System.IO.Directory.Exists(excludeDir))
